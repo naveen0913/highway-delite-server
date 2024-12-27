@@ -127,7 +127,7 @@ export const verifyOtpForLogin = async (req, res) => {
     otpStore.delete(email);
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET_KEY,);
 
-    res.status(200).send({ code: process.env.STATUS_CODE_SUCCESS, messsage: 'Login successful.', token: token });
+    res.status(200).send({ code: process.env.STATUS_CODE_SUCCESS, message: 'Login successful.', token: token ,data:user});
   } catch (error) {
     console.error('Error during login:', error.message);
     res.status(500).send({ code: process.env.STATUS_CODE_INTERNAL_ERROR, error: 'Internal server error.' });
