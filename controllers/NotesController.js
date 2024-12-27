@@ -82,17 +82,3 @@ export const deleteNotes = async (req, res) => {
     }
 };
 
-export const deleteAllNotes = async (req, res) => {
-    try {
-        const userId = req.user.userId; // User ID from token
-        const deletedCount = await Notes.destroy({ userId } );
-
-        res.status(200).json({ 
-            code: process.env.STATUS_CODE_SUCCESS, 
-            message: `${deletedCount} notes deleted successfully.` 
-        });
-    } catch (error) {
-        console.error('Error deleting all notes:', error.message);
-        res.status(500).json({ code: process.env.STATUS_CODE_INTERNAL_ERROR, error: 'Internal server error.' });
-    }
-};
