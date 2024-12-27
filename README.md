@@ -28,6 +28,7 @@ npm install
 ### 3. Set Up Environment Variables
 
 Create a `.env` file in the root directory of your project and add the following variables:
+```env
 PORT=5000
 STATUS_CODE_BAD_REQUEST=400
 STATUS_CODE_SUCCESS=200
@@ -47,7 +48,7 @@ EMAIL=your mail
 EMAIL_PASSWORD=your google accont app passowrds (link : https://myaccount.google.com/apppasswords)
 EMAIL_PORT=465
 EMAIL_HOST=smtp.gmail.com
-Replace the values with your MySQL configuration and desired port number.
+```
 
 ### 4. Create MySQL Database
 
