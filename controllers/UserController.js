@@ -25,6 +25,8 @@ export const requestOtpForSignup = async (req, res) => {
   if (!username || !dateOfBirth || !email) {
     return res.status(400).json({ code: process.env.STATUS_CODE_BAD_REQUEST, error: 'All fields are required.' });
   }
+ const existingUser = await Users.findOne({ where: { email } });
+  if (existingUser) return res.status(409).send({ code: process.env.STATUS_CODE_EXISTS, error: 'User already exists.' });
 
   const otp = crypto.randomInt(100000, 999999).toString();
   const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
